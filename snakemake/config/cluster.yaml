@@ -1,0 +1,196 @@
+
+# cluster specific environment and resource information for rules
+
+bwa_mem:
+    threads: 12
+    resources:
+        mem_mb: 32768
+        time: "24:00:00"
+# trying 3 threads and 3 days
+# not sure about that above... for now trying to set it to run on meb largemem to not go oom with 128g vs 60g now
+tefinder:
+    threads: 1
+    resources:
+        mem_mb: 131072
+        time: "144:00:00"
+        partition: "meb_largemem"
+
+picard_add_read_groups:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "24:00:00"
+
+bwa_index:
+    threads: 16
+    resources:
+        mem_mb: 1024
+        time: "24:00:00"
+
+star_index:
+    threads: 16
+    resources:
+        mem_mb: 8192
+        time: "24:00:00"
+
+star_mapping:
+    threads: 16
+    resources:
+        mem_mb: 8192
+        time: "24:00:00"
+
+samtools_index:
+    threads: 8
+    resources:
+        mem_mb: 128
+        time: "24:00:00"
+
+samtools_stats:
+    threads: 8
+    resources:
+        mem_mb: 128
+        time: "24:00:00"
+rscript_wrapper:
+    threads: 1
+    resources:
+        mem_mb: 8192
+        time: "24:00:00"
+rscript_wrapper_yeast_data:
+    threads: 1
+    resources:
+        mem_mb: 8192
+        time: "48:00:00"
+rscript_wrapper_mouse_data:
+    threads: 1
+    resources:
+        mem_mb: 8192
+        time: "48:00:00"
+fastqc:
+    threads: 8
+    resources:
+        mem_mb: 2048
+        time: "24:00:00"
+multiqc:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "24:00:00"
+
+zcat_fasta:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "1:00:00"
+
+preprocess_gtf:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "1:00:00"
+
+presort_bed:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "1:00:00"
+
+presort_chip_xls:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "1:00:00"
+
+prepare_header_files:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "1:00:00"
+
+bedtools_multi_intersect:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "48:00:00"
+
+aggregate_macs2_pdfs:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "1:00:00"
+
+bedtools_intersect:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "48:00:00"
+
+bedtools_intersect_chip:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "48:00:00"
+
+split_intersect_bed:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "24:00:00"
+
+bedtools_groupby_splits:
+    threads: 1
+    resources:
+        mem_mb: 16384
+        time: "24:00:00"
+
+unsplit_beds:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "1:00:00"
+
+bedtools_groupby:
+    threads: 1
+    resources:
+        mem_mb: 4096
+        time: "24:00:00"
+
+bedtools_multicov:
+    threads: 1
+    resources:
+        mem_mb: 4096
+        time: "24:00:00"
+bedops_multi_intersect:
+    threads: 1
+    resources:
+        mem_mb: 4096
+        time: "24:00:00"
+bedtools_nuc:
+    threads: 1
+    resources:
+        mem_mb: 128
+        time: "24:00:00"
+macs2:
+    threads: 1
+    resources:
+        mem_mb: 8192
+        time: "48:00:00"
+fastq_dump:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "24:00:00"
+sra:
+    threads: 1
+    resources:
+        mem_mb: 1024
+        time: "144:00:00"
+mv_fastq:
+    threads: 1
+    resources:
+        mem_mb: 256
+        time: "24:00:00"
+macs2_plot_R:
+    threads: 1
+    resources:
+        mem_mb: 256
+        time: "24:00:00"

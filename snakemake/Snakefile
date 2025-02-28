@@ -1,0 +1,55 @@
+# snakefile for running pairing score analysis
+
+configfile:
+    "config/cluster.yaml"
+import pandas
+samples = pandas.read_csv('resources/samples.csv')
+
+localrules: all
+
+
+############### ADJUST THESE OUTPUT FILE PATHS TO SOMETHING SENSIBLE FOR YOUR SYSTEM ####################
+# the "root" (/scratch1/genutis/hic in this case) is also used as a working directory for the pipeline and should have plenty of space available.
+
+rule all:
+    input:
+# for multiqc
+        "/scratch2/genutis/hic/qc/multiqc.dm3.html",
+# for rscript wrapper yeast_data
+        "/scratch2/genutis/hic/data/DBVPG6044_ps_means_medians.csv",
+        "/scratch2/genutis/hic/data/Y12_ps_means_medians.csv",
+# for rscript wrapper mouse data
+        "/scratch2/genutis/hic/data/du_mat_ps_means_medians.tsv",
+        "/scratch2/genutis/hic/data/du_pat_ps_means_medians.tsv",
+        "/scratch2/genutis/hic/data/te_counts_du_mat.tsv",
+        "/scratch2/genutis/hic/data/te_counts_du_pat.tsv",
+
+# for rscript wrapper
+        "/scratch2/genutis/hic/figs/pairing_score_plots_horizontal.dm3.pdf",
+
+
+# rules to generate the above output files
+include: "workflow/rules/sra.smk"
+include: "workflow/rules/fastq_dump.smk"
+include: "workflow/rules/fastqc.smk"
+include: "workflow/rules/multiqc.smk"
+include: "workflow/rules/samtools_stats.smk"
+include: "workflow/rules/bwa_index.smk"
+include: "workflow/rules/bwa_mem.smk"
+include: "workflow/rules/zcat_fasta.smk"
+include: "workflow/rules/star_index.smk"
+include: "workflow/rules/star_mapping.smk"
+include: "workflow/rules/tefinder.smk"
+include: "workflow/rules/presort_bed.smk"
+include: "workflow/rules/preprocess_gtf.smk"
+include: "workflow/rules/samtools_index.smk"
+include: "workflow/rules/bedtools_intersector.smk"
+include: "workflow/rules/split_intersect_bed.smk"
+include: "workflow/rules/bedtools_groupby_splits.smk"
+include: "workflow/rules/unsplit_beds.smk"
+include: "workflow/rules/bedtools_groupby.smk"
+include: "workflow/rules/bedtools_nuc.smk"
+include: "workflow/rules/bedtools_multicov.smk"
+include: "workflow/rules/rscript_wrapper_dmel_data.smk" # runs ps plotting script "scripts/ps_plotting.R"
+include: "workflow/rules/rscript_wrapper_yeast_data.smk" # wrapper for yeast data ps analysis
+include: "workflow/rules/rscript_wrapper_mouse_data.smk" # wrapper for mouse data ps analysis

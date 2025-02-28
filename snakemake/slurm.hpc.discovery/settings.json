@@ -1,0 +1,6 @@
+{
+    "SBATCH_DEFAULTS": "account=noujdine_61 paritition=cegs mail-type=ALL mail-user=genutis@usc.edu",
+    "CLUSTER_NAME": "",
+    "CLUSTER_CONFIG": "",
+    "ADVANCED_ARGUMENT_CONVERSION": "no"
+}

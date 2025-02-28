@@ -1,0 +1,27 @@
+cluster:
+  mkdir -p results/logs/{rule} &&
+  sbatch
+    --parsable
+    --ntasks=1
+    --nodes=1
+    --time={resources.time}
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}mb
+    --job-name={rule}
+    --output=results/logs/{rule}/{rule}-%j.out
+
+#default-resources:
+#  - time="01:00:00"
+#  - mem="1gb"
+
+cluster-status: "status-sacct.sh"
+restart-times: 3
+max-jobs-per-second: 10
+max-status-checks-per-second: 0.1
+local-cores: 1
+latency-wait: 60
+jobs: 250
+keep-going: True
+rerun-incomplete: True
+printshellcmds: True
+use-conda: True
