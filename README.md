@@ -5,15 +5,15 @@ Git repo for final version of pairing score analysis manuscript.
 
 ## System requirements
 
-128gb memory per node.
-Nodes must be internet connected for sra rule (although this can be configured to run on login nodes through appending the local rule in the Snakefile with sra).
+- 128gb memory per node.
+- Nodes must be internet connected for sra rule (although this can be configured to run on login nodes through appending the local rule in the Snakefile with sra).
 
 
 ## Software Requirements
 
-Slurm or another job scheduler
-Snakemake
-Conda
+- Slurm or another job scheduler
+- Snakemake
+- Conda
 
 
 ## Usage
